@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Vendas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍫 ChocUlisses 🍩</h1>
+
+        <!-- BLOCOS DE RESULTADOS -->
+        <div class="bloco">
+            <h2>📅 Resumo do Dia Escolhido</h2>
+            <div class="resumo-grid">
+                <div class="resumo-card">
+                    <p>Recebido</p>
+                    <span id="hoje-pago" class="valor verde">R$ 0,00</span>
+                </div>
+                <div class="resumo-card">
+                    <p>A Receber</p>
+                    <span id="hoje-pendente" class="valor vermelho">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloco">
+            <h2>📊 Resumo Mensal</h2>
+            <div class="resumo-grid">
+                <div class="resumo-card">
+                    <p>Recebido</p>
+                    <span id="mes-pago" class="valor verde">R$ 0,00</span>
+                </div>
+                <div class="resumo-card">
+                    <p>A Receber</p>
+                    <span id="mes-pendente" class="valor vermelho">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div class="bloco">
+            <h2>🛒 Nova Venda</h2>
+            <form id="formulario">
+                
+                <label for="comprador">Nome do Comprador:</label>
+                <input type="text" id="comprador" required placeholder="Ex: João Silva">
+
+                <label for="data">Data da Compra:</label>
+                <input type="date" id="data" required>
+
+                <!-- PRODUTO TRUFA -->
+                <div class="produto-grupo">
+                    <strong>🍬 Trufa</strong>
+                    <div class="flex-campos">
+                        <div>
+                            <label>Qtd:</label>
+                            <input type="number" id="trufa_qtd" min="0" value="0">
+                        </div>
+                        <div>
+                            <label>Unitário:</label>
+                            <input type="number" id="trufa_valor" step="0.01" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUTO BARRA -->
+                <div class="produto-grupo">
+                    <strong>🍫 Barra de Chocolate</strong>
+                    <div class="flex-campos">
+                        <div>
+                            <label>Qtd:</label>
+                            <input type="number" id="barra_qtd" min="0" value="0">
+                        </div>
+                        <div>
+                            <label>Unitário:</label>
+                            <input type="number" id="barra_valor" step="0.01" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+
+                <label for="status">Situação do Pagamento:</label>
+                <select id="status">
+                    <option value="PAGO">Pago</option>
+                    <option value="PENDENTE">Não Pago</option>
+                </select>
+
+                <button type="submit">🧁 Salvar Venda</button>
+            </form>
+        </div>
+
+        <!-- HISTÓRICO COM ABAS E FILTRO MENSAL -->
+        <div class="bloco">
+            <h2>📜 Histórico de Pedidos</h2>
+            
+            <!-- Filtro por Data -->
+            <div class="filto-data-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="filtrar-por-mes" checked onchange="atualizarTela()">
+                    Ver apenas pedidos do mês selecionado
+                </label>
+                <!-- HISTÓRICO COM ABAS E FILTRO MENSAL -->
+<div class="bloco">
+    <h2>📜 Histórico de Pedidos</h2>
+    
+   
+
+    <!-- Campo de Busca por Nome do Comprador -->
+    <div style="margin-bottom: 16px;">
+        <input type="text" id="buscar-nome" placeholder="🔍 Buscar comprador pelo nome..." oninput="atualizarTela()">
+    </div>
+
+    <!-- Contêiner das Abas -->
+    <div class="abas-container">
+        <button id="aba-todos" class="btn-aba ativa" onclick="mudarAba('TODOS')">Todos</button>
+        <button id="aba-pagos" class="btn-aba" onclick="mudarAba('PAGO')">Pagos 🟢</button>
+        <button id="aba-pendentes" class="btn-aba" onclick="mudarAba('PENDENTE')">Pendentes 🔴</button>
+    </div>
+
+    <div id="lista-vendas"></div>
+</div>
+
+            </div>
+
+            <!-- Contêiner das Abas -->
+          
+
+            <div id="lista-vendas"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

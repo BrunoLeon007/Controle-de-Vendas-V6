@@ -1,0 +1,391 @@
+:root {
+    --bg-principal: #f9f6f0;
+    --txt-principal: #3d2b1f;
+    --cor-primaria: #6f4e37; /* Tom Chocolate */
+    --cor-primaria-hover: #5a3d2a;
+    --cor-sucesso: #2d7a43;
+    --cor-sucesso-bg: #e8f5e9;
+    --cor-perigo: #c62828;
+    --cor-perigo-bg: #ffebee;
+    --cor-borda: #e0d7cd;
+    --sombra: 0 4px 12px rgba(111, 78, 55, 0.08);
+}
+
+/* Configuração para melhor comportamento em telas de toque */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-principal);
+    color: var(--txt-principal);
+    margin: 0;
+    padding: 12px; /* Margem menor para telas de celular */
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: var(--cor-primaria);
+    font-size: 1.8rem; /* Fonte ligeiramente reduzida para mobile */
+    margin: 15px 0 20px 0;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 1.15rem;
+    color: var(--cor-primaria);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: 8px;
+}
+
+/* Cartões e Blocos */
+.bloco {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px; /* Ajuste interno para telas menores */
+    margin-bottom: 16px;
+    box-shadow: var(--sombra);
+    border: 1px solid rgba(224, 215, 205, 0.5);
+}
+
+/* Grid de Resumos - Ajustado para caber em qualquer largura */
+.resumo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.resumo-card {
+    background: #fdfcf7;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--cor-borda);
+}
+
+.resumo-card p {
+    margin: 0 0 4px 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #7d6b5d;
+}
+
+.valor {
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: block;
+    word-break: break-all; /* Evita que valores grandes quebrem o layout */
+}
+
+/* Cores Dinâmicas */
+.verde { color: var(--cor-sucesso); }
+.vermelho { color: var(--cor-perigo); }
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: -4px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    padding: 12px; /* Maior área de clique para os dedos */
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: var(--txt-principal);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    max-width: 100%;
+    -webkit-appearance: none; /* Uniformiza estilo do select no iOS */
+}
+
+input:focus, select:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.1);
+}
+
+/* Grupos de Produtos */
+.produto-grupo {
+    background: #fdfbf7;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px dashed var(--cor-borda);
+}
+
+.produto-grupo strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.flex-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dividido igualmente no mobile */
+    gap: 10px;
+}
+
+.flex-campos div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Área de Filtro por Data */
+.filto-data-container {
+    background: #fdfcf7;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+    margin-bottom: 16px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--txt-principal);
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.3;
+}
+
+.checkbox-label input {
+    width: 20px; /* Checkbox maior para facilitar o toque */
+    height: 20px;
+    accent-color: var(--cor-primaria);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Sistema de Abas - Agora com rolagem caso não caiba na tela */
+.abas-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 10px;
+    overflow-x: auto; /* Permite rolagem lateral se faltar espaço */
+    scrollbar-width: none; /* Oculta barra no Firefox */
+    -webkit-overflow-scrolling: touch;
+}
+
+.abas-container::-webkit-scrollbar {
+    display: none; /* Oculta barra no Chrome/Safari */
+}
+
+.btn-aba {
+    flex: 1;
+    min-width: 90px; /* Garante tamanho mínimo para o texto */
+    background-color: #f5f0e8;
+    color: var(--txt-principal);
+    font-size: 0.85rem;
+    padding: 10px 4px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap; /* Evita quebra de linha no texto do botão */
+}
+
+.btn-aba:hover {
+    background-color: #eaddcd;
+}
+
+.btn-aba.ativa {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+/* Botões Gerais */
+button {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 12px; /* Área de toque ideal para telas mobile */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button[type="submit"] {
+    background-color: var(--cor-primaria);
+    color: white;
+    margin-top: 8px;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Itens do Histórico formatados em cartões empilhados */
+.item-venda {
+    background: #fff;
+    border: 1px solid var(--cor-borda);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.item-venda p {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+}
+
+.item-venda p:last-of-type {
+    margin-bottom: 12px;
+}
+
+.txt-itens {
+    font-size: 0.85rem;
+    color: #7d6b5d;
+    background: #f5f0e8;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: block; /* Ocupa a linha toda no mobile */
+    word-break: break-word;
+}
+
+.status-badge {
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 2px;
+}
+.status-badge.pago {
+    background-color: var(--cor-sucesso-bg);
+    color: var(--cor-sucesso);
+}
+.status-badge.pendente {
+    background-color: var(--cor-perigo-bg);
+    color: var(--cor-perigo);
+}
+
+/* Ações do Histórico - Botões adaptáveis em mobile */
+.acoes-venda {
+    display: flex;
+    flex-direction: column; /* Empilha os botões no celular */
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-pagar {
+    background-color: var(--cor-sucesso);
+    color: white;
+    font-size: 0.9rem;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn-pagar:hover {
+    background-color: #235e34;
+}
+
+.btn-apagar {
+    background-color: transparent;
+    color: var(--cor-perigo);
+    border: 1px solid var(--cor-perigo);
+    font-size: 0.9rem;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn-apagar:hover {
+    background-color: var(--cor-perigo-bg);
+}
+
+/* ÁREA EXPANSÍVEL DE DETALHES DE PENDÊNCIAS */
+.comprador-link-pendente {
+    color: var(--cor-perigo);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.comprador-link-pendente:hover {
+    color: var(--cor-primaria-hover);
+}
+
+.painel-detalhe-pendencia {
+    background-color: var(--cor-perigo-bg);
+    border-left: 4px solid var(--cor-perigo);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    animation: deslizarAbaixo 0.25s ease-out;
+}
+
+.painel-detalhe-pendencia h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--cor-perigo);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.painel-detalhe-pendencia p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: var(--txt-principal);
+}
+
+.painel-detalhe-pendencia .total-destaque {
+    border-top: 1px dashed var(--cor-borda);
+    padding-top: 8px;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+@keyframes deslizarAbaixo {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajuste para telas maiores (computador/tablet) */
+@media (min-width: 480px) {
+    .acoes-venda {
+        flex-direction: row; /* Volta a ficar lado a lado em telas maiores */
+    }
+    .btn-pagar, .btn-apagar {
+        width: auto; /* Botões assumem o tamanho do seu texto */
+    }
+    .txt-itens {
+        display: inline-block; /* Retorna ao padrão horizontal em computadores */
+    }
+}
